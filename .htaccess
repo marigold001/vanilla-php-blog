@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# Exclude requests to the includes directory from rewriting
+RewriteCond %{REQUEST_URI} !^/includes/
+
+# Rewrite all other requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
