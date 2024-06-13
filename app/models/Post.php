@@ -19,7 +19,29 @@ class Post
         $query = "SELECT * FROM posts";
         $statement = $this->db->prepare($query);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_OBJ);
+        $posts = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        foreach ($posts as $post) {
+            // Fetch categories related to the current post
+            $query = "SELECT c.id, c.name 
+                  FROM categories c
+                  INNER JOIN post_categories pc ON c.id = pc.category_id
+                  WHERE pc.post_id = ?";
+            $statement = $this->db->prepare($query);
+            $statement->execute([$post->id]);
+            $post->categories = $statement->fetchAll(PDO::FETCH_OBJ);
+
+            // Fetch tags related to the current post
+            $query = "SELECT t.id, t.name 
+                  FROM tags t
+                  INNER JOIN post_tags pt ON t.id = pt.tag_id
+                  WHERE pt.post_id = ?";
+            $statement = $this->db->prepare($query);
+            $statement->execute([$post->id]);
+            $post->tags = $statement->fetchAll(PDO::FETCH_OBJ);
+        }
+
+        return $posts;
     }
 
     public function create($data)

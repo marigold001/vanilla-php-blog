@@ -7,10 +7,7 @@
     </div>
     <div>
       <a class="navbar-brand brand-logo" href="/">
-        <img src="/assets_admin/images/logo.svg" alt="logo" />
-      </a>
-      <a class="navbar-brand brand-logo-mini" href="../index.html">
-        <img src="/assets_admin/images/logo-mini.svg" alt="logo" />
+        <h2>Homepage</h2>
       </a>
     </div>
   </div>
