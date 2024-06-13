@@ -8,6 +8,7 @@
 <main id="main">
 
     <!-- ======= Hero Slider Section ======= -->
+    <?php if(false) :?>
     <section id="hero-slider" class="hero-slider">
         <div class="container-md" data-aos="fade-in">
             <div class="row">
@@ -63,7 +64,7 @@
             </div>
         </div>
     </section><!-- End Hero Slider Section -->
-
+    <?php endif; ?>
     <!-- ======= Post Grid Section ======= -->
     <?php if (!empty($posts)) : ?>
         <section id="posts" class="posts">
