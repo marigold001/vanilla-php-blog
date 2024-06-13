@@ -86,7 +86,7 @@
                     </div>
 
                 </div>
-
+                <?php if(false) :?>
                 <div class="col-md-6">
                     <div class="social-links mb-3 mb-lg-0 text-center text-md-end">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -97,6 +97,7 @@
                     </div>
 
                 </div>
+                <?php endif; ?>
 
             </div>
 
