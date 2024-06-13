@@ -10,7 +10,7 @@
 
                 <div class="col-md-9" data-aos="fade-up">
                     <?php $hasPosts = false; ?>
-                    <h3 class="category-title">Category: <?= $tag->name ?></h3>
+                    <h3 class="category-title">Tag: <?= $tag->name ?></h3>
                     <?php foreach ($posts as $post) : ?>
                         <?php
                         // Check if the post belongs to the current category
