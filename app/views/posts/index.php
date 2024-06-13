@@ -60,7 +60,7 @@
                                 </button>
                                 <!-- Rest of your table -->
                                 <div class="clear-fix" style="clear: both"></div>
-                                <div class="table-responsive">
+                                <div class="table-responsive mt-2">
                                     <table class="table">
                                         <thead>
                                         <tr>

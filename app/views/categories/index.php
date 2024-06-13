@@ -50,7 +50,7 @@
                                     Selected
                                 </button>
                                 <div class="clear-fix"></div>
-                                <div class="table-responsive">
+                                <div class="table-responsive mt-2">
                                     <table class="table">
                                         <thead>
                                         <tr>
