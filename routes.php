@@ -3,17 +3,25 @@
 
 require_once __DIR__ . '/app/controllers/PostController.php';
 require_once __DIR__ . '/app/controllers/AdminController.php';
+require_once __DIR__ . '/app/controllers/FrontendController.php';
+require_once __DIR__ . '/app/controllers/TagsController.php';
+require_once __DIR__ . '/app/controllers/CategoriesController.php';
 require_once __DIR__ . '/app/models/Post.php';
+require_once __DIR__ . '/app/models/Tag.php';
+require_once __DIR__ . '/app/models/Category.php';
 require_once __DIR__ . '/app/config/Database.php';
 require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/includes/functions.php';
 
+use App\Controllers\CategoriesController;
 use App\Controllers\FrontendController;
 use App\Controllers\PostController;
 use App\Controllers\AdminController;
+use App\Controllers\TagsController;
 
 // Define routes
 $routes = [
+    // posts
     '/admin/posts' => [PostController::class, 'index'],
     '/admin/posts/create' => [PostController::class, 'create'],
     '/admin/posts/store' => [PostController::class, 'store'],
@@ -23,8 +31,29 @@ $routes = [
     '/admin/posts/{id}/delete' => [PostController::class, 'destroy'],
     '/admin/posts/bulkDelete' => [PostController::class, 'bulkDelete'],
     '/upload' => [AdminController::class, 'CKimageUpload'],
+
+    // categories
+    '/admin/categories' => [CategoriesController::class, 'index'],
+    '/admin/categories/create' => [CategoriesController::class, 'create'],
+    '/admin/categories/store' => [CategoriesController::class, 'store'],
+    '/admin/categories/{id}/edit' => [CategoriesController::class, 'edit'],
+    '/admin/categories/{id}/update' => [CategoriesController::class, 'update'],
+    '/admin/categories/{id}/delete' => [CategoriesController::class, 'destroy'],
+    '/admin/categories/bulkDelete' => [CategoriesController::class, 'bulkDelete'],
+
+    //tags
+    '/admin/tags' => [TagsController::class, 'index'],
+    '/admin/tags/create' => [TagsController::class, 'create'],
+    '/admin/tags/store' => [TagsController::class, 'store'],
+    '/admin/tags/{id}/edit' => [TagsController::class, 'edit'],
+    '/admin/tags/{id}/update' => [TagsController::class, 'update'],
+    '/admin/tags/{id}/delete' => [TagsController::class, 'destroy'],
+    '/admin/tags/bulkDelete' => [TagsController::class, 'bulkDelete'],
+
     // Frontend routes
-    '/' => [FrontendController::class, 'index']
+    '/' => [FrontendController::class, 'index'],
+    '/post/{id}' => [FrontendController::class, 'single_post'],
+
 ];
 
 // Get the current URL

@@ -31,42 +31,62 @@ class Post
             $data['image'],
             $data['status']
         ]);
+
+        $postId = $this->db->lastInsertId();
+        if (!empty($data['tags'])) {
+            $tagStmt = $this->db->prepare("INSERT INTO post_tags (post_id, tag_id) VALUES (?, ?)");
+            foreach ($data['tags'] as $tagId) {
+                $tagStmt->execute([$postId, $tagId]);
+            }
+        }
+        if (!empty($data['categories'])) {
+            $catStmt = $this->db->prepare("INSERT INTO post_categories (post_id, category_id) VALUES (?, ?)");
+            foreach ($data['categories'] as $catId) {
+                $catStmt->execute([$postId, $catId]);
+            }
+        }
     }
 
     public function update($id, $data)
     {
         // Prepare the base SQL query
-        $sql = "UPDATE posts SET title = ?, content = ?, status = ?";
+        $sql = "UPDATE posts SET title = ?, summary = ?, content = ?, status = ?";
+        $params = [
+            $data['title'],
+            $data['summary'],
+            $data['content'],
+            $data['status'],
+        ];
 
         // Check if an image is provided
         if (!empty($data['image'])) {
             $sql .= ", image = ?";
+            $params[] = $data['image'];
         }
 
+        // Add WHERE clause
         $sql .= " WHERE id = ?";
+
+        // Add $id to the parameters
+        $params[] = $id;
 
         // Prepare the statement
         $stmt = $this->db->prepare($sql);
-        // Bind parameters based on whether the image is provided
-        if (!empty($data['image'])) {
-            $params = [
-                $data['title'],
-                $data['content'],
-                $data['status'],
-                $data['image'],
-                $id
-            ];
-        } else {
-            $params = [
-                $data['title'],
-                $data['content'],
-                $data['status'],
-                $id
-            ];
-        }
 
         // Execute the statement with the parameters
         $stmt->execute($params);
+        if (isset($data['tags'])) {
+            $this->updateTags($id, $data['tags']);
+        } else {
+            $this->deleteTags($id);
+        }
+
+        if (isset($data['categories'])) {
+            $this->updateCategories($id, $data['categories']);
+        } else {
+            $this->deleteCategories($id);
+        }
+
         return $stmt->rowCount();
     }
 
@@ -83,11 +103,61 @@ class Post
     }
 
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $query = "DELETE FROM posts WHERE id = ?";
         $statement = $this->db->prepare($query);
         $success = $statement->execute([$id]);
         return $success;
     }
+
+    public function postTagsInsert($post_id, $tag_id)
+    {
+        $query = "SELECT * FROM posts";
+        $statement = $this->db->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function deleteTags($postId)
+    {
+        $sql = "DELETE FROM post_tags WHERE post_id = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$postId]);
+    }
+
+    public function updateTags($postId, $tags)
+    {
+        // First, delete all existing tags for the post
+        $this->deleteTags($postId);
+
+        // Insert new tags for the post
+        $sql = "INSERT INTO post_tags (post_id, tag_id) VALUES (?, ?)";
+        $stmt = $this->db->prepare($sql);
+        foreach ($tags as $tagId) {
+            $stmt->execute([$postId, $tagId]);
+        }
+    }
+
+    public function deleteCategories($postId)
+    {
+        $sql = "DELETE FROM post_categories WHERE post_id = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$postId]);
+    }
+
+    public function updateCategories($postId, $categories)
+    {
+        // First, delete all existing tags for the post
+        $this->deleteCategories($postId);
+
+        // Insert new tags for the post
+        $sql = "INSERT INTO post_categories (post_id, category_id) VALUES (?, ?)";
+        $stmt = $this->db->prepare($sql);
+        foreach ($categories as $catId) {
+            $stmt->execute([$postId, $catId]);
+        }
+    }
+
 
 }

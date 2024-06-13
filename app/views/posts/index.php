@@ -1,8 +1,13 @@
 <!-- posts/index.php -->
-<?php require BASE_PATH . '/templates/admin/partials/_header.html'; ?>
-<?php require BASE_PATH . '/templates/admin/partials/_navbar.php'; ?>
+<!--  Header partial   -->
+<?php echo $header ?>
+
+<!--  Navbar partial   -->
+<?php echo $navbar ?>
+
 <div class="container-fluid page-body-wrapper">
-    <?php require BASE_PATH . '/templates/admin/partials/_sidebar.html'; ?>
+<!--  Sidebar partial   -->
+    <?php echo $sidebar ?>
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
@@ -38,6 +43,12 @@
                         <div class="card-body">
 
                             <h4 class="card-title d-inline mr-4">Posts</h4>
+                            <p class="card-description">
+
+                                <blockquote>
+                                    "Truth never damages a cause that is just." - Mahatma Gandhi
+                                </blockquote>
+                            </p>
 
                             <form action="/admin/posts/bulkDelete" method="post"
                                   onsubmit="return confirm('Are you sure you want to delete selected posts?');"
@@ -68,7 +79,7 @@
                                                            value="<?php echo $post->id; ?>"></td>
                                                 <td><img src="<?php echo getImagePath($post->image) ?? ''; ?>"
                                                          class="img-thumbnail" alt="<?php echo $post->title; ?>"></td>
-                                                <td><?php echo $post->title; ?></td>
+                                                <td><a class="post-listing-title" href="/post/<?= $post->id ?>"><?php echo $post->title; ?></a></td>
                                                 <?php $date = strtotime($post->created_at); ?>
                                                 <td><?php echo date('Y', $date) ?? ''; ?></td>
                                                 <td><?php echo $post->status ?? ''; ?></td>
@@ -108,5 +119,5 @@
         history.replaceState(null, null, urlWithoutParams);
     }, 3000);
 </script>
-
-<?php include BASE_PATH . '/templates/admin/partials/_footer.html'; ?> <!-- Include footer -->
+<!--  Footer partial   -->
+<?php echo $footer ?>

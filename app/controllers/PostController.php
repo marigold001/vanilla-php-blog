@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 
 class PostController
 {
@@ -11,14 +13,28 @@ class PostController
         // Retrieve all posts from the database
         $postModel = new Post();
         $posts = $postModel->all();
+        $partials = $this->partials();
+        $header = $partials['header'];
+        $navbar = $partials['navbar'];
+        $sidebar = $partials['sidebar'];
+        $footer = $partials['footer'];
 
-        // Load the view to display all posts
+
         require_once  BASE_PATH . '/app/views/posts/index.php';
     }
 
     public function create()
     {
         // Load the view to create a new post
+        $partials = $this->partials();
+        $header = $partials['header'];
+        $navbar = $partials['navbar'];
+        $sidebar = $partials['sidebar'];
+        $footer = $partials['footer'];
+        $tags_model = new Tag();
+        $tags = $tags_model->all();
+        $categories_model = new Category();
+        $categories = $categories_model->all();
         require_once  BASE_PATH . '/app/views/posts/create.php';
     }
 
@@ -26,6 +42,7 @@ class PostController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $title = $_POST['title'];
+            $summary = $_POST['summary'];
             $status = $_POST['status'];
             $content = $_POST['content'];
 
@@ -38,13 +55,21 @@ class PostController
             } else {
                 $parsedImageName = null;
             }
-
+            if($_POST['tags']) {
+                $tags = $_POST['tags'];
+            }
+            if($_POST['categories']) {
+                $categories = $_POST['categories'];
+            }
             $post = new Post();
             $post->create([
                 'title' => $title,
+                'summary' => $summary,
                 'content' => $content,
                 'image' => $parsedImageName,
                 'status' => $status,
+                'tags' => $tags,
+                'categories' => $categories
             ]);
 
             header('Location: /admin/posts');
@@ -55,6 +80,7 @@ class PostController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $title = $_POST['title'];
+            $summary = $_POST['summary'];
             $status = $_POST['status'];
             $content = $_POST['content'];
 
@@ -67,18 +93,31 @@ class PostController
             } else {
                 $parsedImageName = null;  // No new image uploaded
             }
-
+            if(isset($_POST['tags'])) {
+                $tags = $_POST['tags'];
+            } else {
+                $tags = null;
+            }
+            if(isset($_POST['categories'])) {
+                $categories = $_POST['categories'];
+            } else {
+                $categories = null;
+            }
             $post = new Post();
             $data = [
                 'title' => $title,
+                'summary' => $summary,
                 'content' => $content,
                 'image' => $parsedImageName,
                 'status' => $status,
+                'tags' => $tags,
+                'categories' => $categories
             ];
             // Only set the image if a new image was uploaded
             if ($parsedImageName === null) {
                 unset($data['image']);
             }
+
 
             $post->update($param['id'], $data);
 
@@ -87,27 +126,30 @@ class PostController
     }
 
 
-
-    public function show($id)
-    {
-        // Retrieve the post with the specified ID from the database
-        $post = Post::find($id);
-
-        // Load the view to display the single post
-        require_once '../app/views/posts/show.php';
-    }
-
     public function edit($param)
     {
         // Retrieve the post with the specified ID from the database
         $post_model = new Post();
         $post = $post_model->find($param['id']);
 
+        $partials = $this->partials();
+        $header = $partials['header'];
+        $navbar = $partials['navbar'];
+        $sidebar = $partials['sidebar'];
+        $footer = $partials['footer'];
+
         // Check if the post exists
         if (!$post) {
             die('Post not found');
         }
 
+        $tags_model = new Tag();
+        $tags = $tags_model->all();
+        $selectedTags = $tags_model->findSelectedTags($param['id']);
+
+        $categories_model = new Category();
+        $categories = $categories_model->all();
+        $selectedCategories = $categories_model->findSelectedCategories($param['id']);
         // Load the view to edit the post
         require_once BASE_PATH . '/app/views/posts/edit.php';
     }
@@ -150,6 +192,26 @@ class PostController
             header("Location: /admin/posts");
             exit;
         }
+    }
+
+    public function partials() {
+        ob_start();
+        include BASE_PATH . '/app/views/backend_partials/_header.php';
+        $header = ob_get_clean();
+
+        ob_start();
+        include BASE_PATH . '/app/views/backend_partials/_navbar.php';
+        $navbar = ob_get_clean();
+
+        ob_start();
+        include BASE_PATH . '/app/views/backend_partials/_sidebar.php';
+        $sidebar = ob_get_clean();
+
+        ob_start();
+        include BASE_PATH . '/app/views/backend_partials/_footer.php';
+        $footer = ob_get_clean();
+
+        return ['header' => $header,   'navbar' => $navbar, 'sidebar' =>$sidebar, 'footer' => $footer];
     }
 
 }

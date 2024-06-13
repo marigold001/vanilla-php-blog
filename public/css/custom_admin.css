@@ -22,3 +22,7 @@ textarea#content {
     min-height: 40px!important;
     max-width: 100px !important;
 }
+
+.post-listing-title {
+    text-decoration: none;
+}

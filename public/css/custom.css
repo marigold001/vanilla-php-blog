@@ -1,0 +1,4 @@
+.single-post img {
+    max-width: 600px !important;
+    height: auto;
+}

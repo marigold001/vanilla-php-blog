@@ -1,8 +1,9 @@
 RewriteEngine On
 RewriteBase /
 
-# Exclude requests to the includes directory from rewriting
+# Allow access to specific folders
 RewriteCond %{REQUEST_URI} !^/includes/
+RewriteCond %{REQUEST_URI} !^/app/views/backend_partials/
 
 # Rewrite all other requests to index.php
 RewriteCond %{REQUEST_FILENAME} !-f

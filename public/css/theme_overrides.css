@@ -1,0 +1,11 @@
+.post-content figure {
+    position: initial;
+    left: initial;
+    min-width: initial;
+    transform: initial;
+    text-align: center;
+}
+
+.select2-selection.select2-selection--multiple {
+    padding: 10px 0;
+}
