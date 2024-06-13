@@ -40,7 +40,7 @@
                                         <div class="post-meta"><span
                                                 class="date"><?php foreach ($post->categories as $postCategoryName) {
                                                     if ($category->name == $postCategoryName->name) {
-                                                        echo "<a href='/categories/{$postCategoryName->id}'>{$postCategoryName->name}</a>";
+                                                        echo "<span >{$postCategoryName->name}</span>";
                                                     }
                                                 } ?></span> <span class="mx-1">&bullet;</span>
                                             <span><?php $date = strtotime($post->created_at);

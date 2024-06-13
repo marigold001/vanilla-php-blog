@@ -73,6 +73,7 @@
                     <div class="col-lg-4">
                         <?php $firstPost = array_shift($posts); ?>
                         <!-- First post with a unique design -->
+                        <?php if($firstPost->status != "draft") :?>
                         <div class="post-entry-1 lg">
                             <a href="/post/<?= $firstPost->id ?>"><img src="<?php echo '/uploads/' . htmlspecialchars($firstPost->image); ?>" alt="<?php echo htmlspecialchars($firstPost->title); ?>" class="img-fluid"></a>
                             <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span><?php $date = strtotime($firstPost->created_at); echo date('Y M', $date); ?></span></div>
@@ -87,10 +88,12 @@
                             </div>
                             <?php endif; ?>
                         </div>
+                        <?php endif; ?>
                     </div>
                     <div class="col-lg-8">
                         <div class="row g-5">
                             <?php foreach ($posts as $post) : ?>
+                                <?php if($post->status != 'draft') :?>
                                 <div class="col-lg-4 border-start custom-border">
                                     <div class="post-entry-1">
                                         <a href="/post/<?= $post->id ?>"><img src="<?php echo '/uploads/' . htmlspecialchars($post->image); ?>" alt="<?php echo htmlspecialchars($firstPost->title); ?>" class="img-fluid"></a>
@@ -99,6 +102,7 @@
                                         <p><?php echo htmlspecialchars($post->summary); ?></p>
                                     </div>
                                 </div>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </div>
                     </div>

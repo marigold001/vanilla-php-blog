@@ -46,7 +46,7 @@
                         if ($categoryHasPosts) {
                             $categoriesWithPosts[] = $category;
                             ?>
-                            <h3 class="category-title">Category: <?= $category->name ?></h3>
+                            <h3 class="category-title">Category: <a href="/categories/<?=$category->id ?>"><?= $category->name ?></a></h3>
 
                             <?php
                             // Iterate over each post again to display them

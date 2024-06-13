@@ -40,7 +40,7 @@
                                     <div class="post-meta"><span
                                             class="date"><?php foreach ($post->tags as $postTagName) {
                                                 if ($tag->name == $postTagName->name) {
-                                                    echo "<a href='/tags/{$postTagName->id}'>{$postTagName->name}</a>";
+                                                    echo "<span >{$postTagName->name}</span>";
                                                 }
                                             } ?></span> <span class="mx-1">&bullet;</span>
                                         <span><?php $date = strtotime($post->created_at);

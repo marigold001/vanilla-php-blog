@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label for="summary">Summary</label>
                                     <input type="text" class="form-control" id="summary" name="summary" placeholder="Summary"
-                                           >
+                                           required>
                                 </div>
                                 <div class="form-group">
                                     <label for="content">Content</label>

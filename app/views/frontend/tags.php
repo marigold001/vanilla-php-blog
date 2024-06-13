@@ -46,7 +46,7 @@
                         if ($tagHasPosts) {
                             $tagsWithPosts[] = $tag;
                             ?>
-                            <h3 class="category-title">Tag: <?= $tag->name ?></h3>
+                            <h3 class="category-title">Tag: <a href="/tags/<?= $tag->id ?>"><?= $tag->name ?></a> </h3>
 
                             <?php
                             // Iterate over each post again to display them
