@@ -17,7 +17,7 @@
                         <?php $count = 0; ?>
                         <?php foreach ($categories as $cat) : ?>
                             <?php if ($cat->status !== "draft" && $count < 5) : ?>
-                                <li><a href="/category/<?= $cat->id ?>"><?= $cat->name ?></a></li>
+                                <li><a href="/categories/<?= $cat->id ?>"><?= $cat->name ?></a></li>
                                 <?php $count++; ?>
                             <?php endif; ?>
                         <?php endforeach; ?>
@@ -28,7 +28,7 @@
                         <?php $count1 = 0; ?>
                         <?php foreach ($tags as $tag) : ?>
                             <?php if ($tag->status !== "draft" && $count1 < 5) : ?>
-                                <li><a href="/tag/<?= $tag->id ?>"><?= $tag->name ?></a></li>
+                                <li><a href="/tags/<?= $tag->id ?>"><?= $tag->name ?></a></li>
                             <?php $count1++; ?>
                             <?php endif; ?>
                         <?php endforeach; ?>
