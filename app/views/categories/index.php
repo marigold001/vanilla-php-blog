@@ -36,17 +36,16 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Categories Table</h4>
-                            <p class="card-description">
-                            <blockquote>"The best relationships are the ones you never saw coming." – Unknown
+                            <h4 class="card-title d-inline">Categories Table</h4>
+                            <blockquote class="float-end">"The best relationships are the ones you never saw coming." – Unknown
                             </blockquote>
-                            </p>
+                            <div class="clear-fix"></div>
                             <form action="/admin/categories/bulkDelete" method="post"
                                   onsubmit="return confirm('Are you sure you want to delete selected categories?');"
                                   class="mr-4">
-                                <a class="btn btn-primary float-end" href="<?php echo 'categories/create'; ?>">Create New
+                                <a class="btn btn-primary float-end mb-2 mr-2" href="<?php echo 'categories/create'; ?>">Create New
                                     Category</a>
-                                <button class="btn btn-danger mr-4 float-end" type="submit" name="delete">Delete
+                                <button class="btn btn-danger mb-2 mr-2 float-end" type="submit" name="delete">Delete
                                     Selected
                                 </button>
                                 <div class="clear-fix"></div>
@@ -102,7 +101,9 @@
     // Function to hide the alert after a delay
     setTimeout(function () {
         var alertElement = document.getElementById('alert-message');
-        alertElement.classList.add('fade-out');
+        if(alertElement) {
+            alertElement.classList.add('fade-out');
+        }
     }, 3000); // Adjust the delay as needed (3000 milliseconds = 3 seconds)
 </script>
 <!--    Footer partial-->

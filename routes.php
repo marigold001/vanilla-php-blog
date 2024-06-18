@@ -52,9 +52,10 @@ $routes = [
 
     // Frontend routes
     '/' => [FrontendController::class, 'index'],
+    '/posts' => [FrontendController::class, 'posts'],
     '/about' => [FrontendController::class, 'about'],
     '/contact' => [FrontendController::class, 'contact'],
-    '/post/{id}' => [FrontendController::class, 'single_post'],
+    '/post/{id}' => [FrontendController::class, 'post_single'],
     '/categories' => [FrontendController::class, 'categories'],
     '/categories/{id}' => [FrontendController::class, 'categories_single'],
     '/tags' => [FrontendController::class, 'tags'],

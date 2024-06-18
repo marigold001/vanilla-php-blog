@@ -1,4 +1,4 @@
-<header id="header" class="header d-flex align-items-center fixed-top">
+<header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
         <a href="/" class="logo d-flex align-items-center">
@@ -10,6 +10,7 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a href="/admin/posts">Admin Panel</a></li>
+                <li><a href="/posts">Posts</a></li>
                 <li class="dropdown"><a href="/categories"><span>Categories</span> <i
                                 class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
@@ -59,6 +60,7 @@
 
         </div>
         <?php endif; ?>
+        <i class="bi bi-list mobile-nav-toggle"></i>
     </div>
 
 </header><!-- End Header -->

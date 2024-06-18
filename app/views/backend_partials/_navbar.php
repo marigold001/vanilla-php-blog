@@ -1,4 +1,27 @@
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+    <ul class="nav-mobile">
+        <li class="nav-item">
+            <a class="nav-link" href="/">
+                <span class="menu-title">Homepage</span>
+            </a>
+        </li><li class="nav-item">
+            <a class="nav-link" href="/admin/posts">
+                <span class="menu-title">Posts</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/categories">
+                <i></i>
+                <span class="menu-title">Categories</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/tags">
+                <i></i>
+                <span class="menu-title">Tags</span>
+            </a>
+        </li>
+    </ul>
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
     <div class="me-3">
       <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">

@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-9" data-aos="fade-up">
+                <div class="col-md-9 additional-padding" data-aos="fade-up">
                         <?php $hasPosts = false; ?>
                         <h3 class="category-title">Category: <?= $category->name ?></h3>
                         <?php foreach ($posts as $post) : ?>

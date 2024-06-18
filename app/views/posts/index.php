@@ -43,19 +43,18 @@
                         <div class="card-body">
 
                             <h4 class="card-title d-inline mr-4">Posts</h4>
-                            <p class="card-description">
 
-                                <blockquote>
+                                <blockquote class="float-end">
                                     "Truth never damages a cause that is just." - Mahatma Gandhi
                                 </blockquote>
-                            </p>
+                                <div class="clear-fix"></div>
 
                             <form action="/admin/posts/bulkDelete" method="post"
                                   onsubmit="return confirm('Are you sure you want to delete selected posts?');"
                                   class="mr-4">
-                                <a class="btn btn-primary float-end" href="<?php echo 'posts/create'; ?>">Create New
+                                <a class="btn btn-primary float-end mb-2 mr-2" href="<?php echo 'posts/create'; ?>">Create New
                                     Post</a>
-                                <button class="btn btn-danger mr-4 float-end" type="submit" name="delete">Delete
+                                <button class="btn btn-danger mb-2 mr-2 float-end" type="submit" name="delete">Delete
                                     Selected
                                 </button>
                                 <!-- Rest of your table -->
@@ -109,11 +108,15 @@
     // Function to hide the alert after a delay
     setTimeout(function () {
         var alertElement = document.getElementById('alert-message');
-        alertElement.classList.add('fade-out');
+        if(alertElement) {
+            alertElement.classList.add('fade-out');
+        }
     }, 3000); // Adjust the delay as needed (3000 milliseconds = 3 seconds)
     setTimeout(function () {
         var alertElement = document.getElementById('status-message');
-        alertElement.classList.add('fade-out');
+        if(alertElement) {
+            alertElement.classList.add('fade-out');
+        }
         // Remove status parameter from URL after 3 seconds
         var urlWithoutParams = window.location.href.split('?')[0];
         history.replaceState(null, null, urlWithoutParams);

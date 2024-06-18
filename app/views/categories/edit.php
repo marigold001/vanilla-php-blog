@@ -12,12 +12,11 @@
                 <div class="col-lg-12 grid-margin stretch-card my-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Edit Category</h4>
-                            <p class="card-description">
-                            <blockquote>
+                            <h4 class="card-title d-inline">Edit Category</h4>
+                            <blockquote class="float-end">
                                 "Earth provides enough to satisfy every man's needs, but not every man's greed." – Mahatma Gandhi
                             </blockquote>
-                            </p>
+                            <div class="clear-fix"></div>
                             <form id="post-create-form" class="forms-sample"
                                   action="/admin/categories/<?= $category->id ?>/update" method="post">
 

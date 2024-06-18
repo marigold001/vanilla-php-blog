@@ -23,7 +23,7 @@ class Post
 
         foreach ($posts as $post) {
             // Fetch categories related to the current post
-            $query = "SELECT c.id, c.name 
+            $query = "SELECT c.id, c.name, c.status
                   FROM categories c
                   INNER JOIN post_categories pc ON c.id = pc.category_id
                   WHERE pc.post_id = ?";
@@ -32,7 +32,7 @@ class Post
             $post->categories = $statement->fetchAll(PDO::FETCH_OBJ);
 
             // Fetch tags related to the current post
-            $query = "SELECT t.id, t.name 
+            $query = "SELECT t.id, t.name, t.status 
                   FROM tags t
                   INNER JOIN post_tags pt ON t.id = pt.tag_id
                   WHERE pt.post_id = ?";
@@ -120,6 +120,25 @@ class Post
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         $post = $stmt->fetch(PDO::FETCH_OBJ);
+
+        // Fetch categories related to the current post
+        $query = "SELECT c.id, c.name, c.status
+                  FROM categories c
+                  INNER JOIN post_categories pc ON c.id = pc.category_id
+                  WHERE pc.post_id = ?";
+        $statement = $this->db->prepare($query);
+        $statement->execute([$id]);
+        $post->categories = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        // Fetch tags related to the current post
+        $query = "SELECT t.id, t.name, t.status 
+                  FROM tags t
+                  INNER JOIN post_tags pt ON t.id = pt.tag_id
+                  WHERE pt.post_id = ?";
+        $statement = $this->db->prepare($query);
+        $statement->execute([$id]);
+        $post->tags = $statement->fetchAll(PDO::FETCH_OBJ);
+
 
         return $post ? $post : null;
     }

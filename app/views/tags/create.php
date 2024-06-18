@@ -12,12 +12,11 @@
                 <div class="col-lg-12 grid-margin stretch-card my-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Create Tag</h4>
-                            <p class="card-description">
-                            <blockquote>
+                            <h4 class="card-title d-inline">Create Tag</h4>
+                            <blockquote class="float-end">
                                 "Presence is more than just being there." - Malcolm S. Forbes
                             </blockquote>
-                            </p>
+                            <div class="clear-fix"></div>
                             <form id="post-create-form" class="forms-sample"
                                   action="/admin/tags/store" method="post">
 

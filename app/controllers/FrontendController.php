@@ -95,8 +95,21 @@ class FrontendController {
         $tag = $tags_model->find($param['id']);
         require_once '../app/views/frontend/tags-single.php';
     }
-
-    public function single_post($param) {
+    public function posts() {
+        $partials = $this->partials();
+        $header = $partials['header'];
+        $navbar = $partials['navbar'];
+        $aside_block = $partials['aside_block'];
+        $footer = $partials['footer'];
+        $post_model = new Post();
+        $posts = $post_model->all();
+        $category_model = new Category();
+        $categories = $category_model->all();
+        $tags_model = new Tag();
+        $tags = $tags_model->all();
+        require_once '../app/views/frontend/posts.php';
+    }
+    public function post_single($param) {
         $partials = $this->partials();
         $header = $partials['header'];
         $navbar = $partials['navbar'];
@@ -104,6 +117,12 @@ class FrontendController {
         $footer = $partials['footer'];
         $postModel = new Post();
         $post = $postModel->find($param['id']);
+        $category_model = new Category();
+        $category = $category_model->find($param['id']);
+        $categories = $category_model->all();
+        $tags_model = new Tag();
+        $tags = $tags_model->all();
+        $tag = $tags_model->find($param['id']);
 
         require_once '../app/views/frontend/single-post.php';
     }

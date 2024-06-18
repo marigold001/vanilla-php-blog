@@ -41,15 +41,15 @@
 
                     // Check if the post has the current popular tag
                     foreach ($post->tags as $tag) {
-                        if ($tag->name == $popularTag) {
+                        if ($tag->name == $popularTag && $tag->status != 'draft') {
                             $postHasPopularTag = true;
                             break; // Exit loop once match is found
                         }
                     }
-
                     // Display the post if it has the current popular tag
                     if ($postHasPopularTag) :
                         ?>
+
                         <div class="post-entry-1 border-bottom">
                             <div class="post-meta"><span class="date"><?php foreach ($post->tags as $tag) {
                                         if ($tag->name == $popularTag) {
@@ -67,6 +67,10 @@
                 endforeach; // End posts loop
             endforeach; // End popular tags loop
             ?>
+            <?php if(!$postHasPopularTag) :?>
+                <h5>We don't have posts with that tag</h5>
+            <?php endif; ?>
+
 
         </div> <!-- End Popular -->
 
@@ -88,7 +92,7 @@
 
                     // Check if the post has the current popular tag
                     foreach ($post->tags as $tag) {
-                        if ($tag->name == $popularTag) {
+                        if ($tag->name == $popularTag && $tag->status != "draft") {
                             $postHasPopularTag = true;
                             break; // Exit loop once match is found
                         }
@@ -114,6 +118,9 @@
                 endforeach; // End posts loop
             endforeach; // End popular tags loop
             ?>
+            <?php if(!$postHasPopularTag) :?>
+                <h5>We don't have posts with that tag</h5>
+            <?php endif; ?>
         </div> <!-- End Trending -->
 
         <!-- Latest -->
@@ -134,7 +141,7 @@
 
                     // Check if the post has the current popular tag
                     foreach ($post->tags as $tag) {
-                        if ($tag->name == $popularTag) {
+                        if ($tag->name == $popularTag && $tag->status != "draft") {
                             $postHasPopularTag = true;
                             break; // Exit loop once match is found
                         }
@@ -160,7 +167,9 @@
                 endforeach; // End posts loop
             endforeach; // End popular tags loop
             ?>
-
+            <?php if(!$postHasPopularTag) :?>
+              <h5>We don't have posts with that tag</h5>
+            <?php endif; ?>
         </div> <!-- End Latest -->
 
     </div>
@@ -190,7 +199,6 @@
 <div class="aside-block">
     <h3 class="aside-title">Tags</h3>
     <ul class="aside-tags list-unstyled">
-        <li><a href="category.html">Business</a></li>
         <?php foreach ($tags as $tag) : ?>
             <?php if ($tag->status !== "draft") : ?>
                 <li><a href="/tags/<?= $tag->id ?>"><?= $tag->name ?></a></li>

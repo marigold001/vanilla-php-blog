@@ -12,12 +12,11 @@
                 <div class="col-lg-12 grid-margin stretch-card my-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Create Category</h4>
-                            <p class="card-description">
-                            <blockquote>
+                            <h4 class="card-title d-inline">Create Category</h4>
+                            <blockquote class="float-end">
                                 "Regret for the things we did can be tempered by time; it is regret for the things we did not do that is inconsolable." – Sydney J. Harris
                             </blockquote>
-                            </p>
+                            <div class="clear-fix"></div>
                             <form id="post-create-form" class="forms-sample"
                                   action="/admin/categories/store" method="post">
 

@@ -14,7 +14,8 @@
                 <div class="col-6 col-lg-2">
                     <h3 class="footer-heading">Navigation</h3>
                     <ul class="footer-links list-unstyled">
-                        <li><a href="/">Admin panel</a></li>
+                        <li><a href="/admin/posts">Admin panel</a></li>
+                        <li><a href="/posts">Posts</a></li>
                         <li><a href="/categories">Categories</a></li>
                         <li><a href="/about">About us</a></li>
                         <li><a href="/contact">Contact</a></li>

@@ -2,7 +2,6 @@
 <?php echo $header ?>
 <!-- ======= Header ======= -->
 <?php echo $navbar ?>
-
 <main id="main">
 
     <section class="single-post-content">
@@ -12,7 +11,14 @@
 
                     <!-- ======= Single Post Content ======= -->
                     <div class="single-post">
-                        <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span><?= htmlspecialchars($post->created_at) ?></span></div>
+                        <div class="post-meta single-post"><span class="date"><div><?php foreach ($post->categories as $postCategory) {
+                                        if(isset($postCategory)) {
+                                            echo "<a href='/categories/{$postCategory->id}'>{$postCategory->name}</a> <br>";
+                                        }
+                                    }
+                                    ?>
+
+                                </div></span> <span><?= htmlspecialchars($post->created_at) ?></span></div>
                         <h1 class="mb-5"><?= htmlspecialchars($post->title) ?></h1>
                         <p><span class="firstcharacter">L</span><?= htmlspecialchars($post->summary) ?></p>
                         <?= $post->content ?>

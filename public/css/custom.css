@@ -2,3 +2,22 @@
     max-width: 600px !important;
     height: auto;
 }
+
+.post-meta.single-post {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.post-meta.all-posts {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    margin-top: 15px;
+
+}
+
+.additional-padding {
+    padding-right: 45px;
+}

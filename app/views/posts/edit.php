@@ -12,12 +12,11 @@
                 <div class="col-lg-12 grid-margin stretch-card my-4">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Edit Post</h4>
-                            <p class="card-description">
-                            <blockquote>
+                            <h4 class="card-title d-inline">Edit Post</h4>
+                            <blockquote class="float-end">
                                 "The act of writing is the act of discovering what you believe." – David Hare
                             </blockquote>
-                            </p>
+                            <div class="clear-fix"></div>
                             <form id="post-edit-form" class="forms-sample"
                                   action="/admin/posts/update/<?php echo $post->id; ?>" method="post"
                                   enctype="multipart/form-data">

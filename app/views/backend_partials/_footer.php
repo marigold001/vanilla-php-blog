@@ -18,6 +18,7 @@
 <script src="/assets_admin/js/settings.js"></script>
 <script src="/assets_admin/js/hoverable-collapse.js"></script>
 <script src="/assets_admin/js/todolist.js"></script>
+<script src="/js/custom_admin.js"></script>
 
 
 <!-- endinject -->

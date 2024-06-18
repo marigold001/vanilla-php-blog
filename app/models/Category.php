@@ -47,9 +47,9 @@ class Category
         $stmt = $this->db->prepare("SELECT * FROM categories WHERE id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        $tag = $stmt->fetch(PDO::FETCH_OBJ);
+        $category = $stmt->fetch(PDO::FETCH_OBJ);
 
-        return $tag ? $tag : null;
+        return $category ? : null;
     }
 
     public function delete($id) {

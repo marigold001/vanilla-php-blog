@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-9" data-aos="fade-up">
+                <div class="col-md-9 additional-padding" data-aos="fade-up">
                     <?php
                     // Initialize an array to track displayed post IDs
                     $displayedPosts = [];

@@ -9,3 +9,25 @@
 .select2-selection.select2-selection--multiple {
     padding: 10px 0;
 }
+
+.navbar {
+    position: static;
+}
+
+.navbar.headerLight {
+  background: initial;
+  box-shadow: initial;
+  -webkit-box-shadow: initial;
+  -moz-box-shadow: initial;
+  transition: initial;
+  -webkit-transition: initial;
+}
+
+.page-body-wrapper {
+    padding-top: 0;
+}
+
+.post-entry-2 {
+    border: 1px solid #3334;
+    padding: 15px 25px 30px 10px;
+}

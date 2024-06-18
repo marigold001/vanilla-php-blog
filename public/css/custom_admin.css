@@ -1,3 +1,28 @@
+/* Navbar */
+
+.nav-mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 992px) {
+    .nav-mobile {
+        width: 100%;
+        display: inline-block;
+        list-style-type: none;
+        text-align: center;
+    }
+
+    .nav-mobile li {
+        display: inline-block;
+        margin: 20px 15px 0 0;
+        font-size: 15px;
+    }
+
+    .nav-mobile a.nav-link.active {
+        color: #1F3BB3;
+    }
+}
+
 .card-title h4 {
     font-size: 30px !important;
 }

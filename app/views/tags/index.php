@@ -36,17 +36,16 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Tags Table</h4>
-                            <p class="card-description">
-                            <blockquote>"Honesty is the first chapter in the book of wisdom." - Thomas Jefferson
+                            <h4 class="card-title d-inline">Tags Table</h4>
+                            <blockquote class="float-end">"Honesty is the first chapter in the book of wisdom." - Thomas Jefferson
                             </blockquote>
-                            </p>
+                            <div class="clear-fix"></div>
                             <form action="/admin/tags/bulkDelete" method="post"
                                   onsubmit="return confirm('Are you sure you want to delete selected tags?');"
                                   class="mr-4">
-                                <a class="btn btn-primary float-end" href="<?php echo 'tags/create'; ?>">Create New
+                                <a class="btn btn-primary mb-2 float-end mr-2"  href="<?php echo 'tags/create'; ?>">Create New
                                     Tag</a>
-                                <button class="btn btn-danger mr-4 float-end" type="submit" name="delete">Delete
+                                <button class="btn btn-danger mb-2 mr-2 float-end" type="submit" name="delete">Delete
                                     Selected
                                 </button>
                                 <div class="clear-fix"></div>
@@ -102,7 +101,9 @@
     // Function to hide the alert after a delay
     setTimeout(function () {
         var alertElement = document.getElementById('alert-message');
-        alertElement.classList.add('fade-out');
+        if(alertElement) {
+            alertElement.classList.add('fade-out');
+        }
     }, 3000); // Adjust the delay as needed (3000 milliseconds = 3 seconds)
 </script>
 <!--    Footer partial-->
