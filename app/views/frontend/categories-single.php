@@ -31,7 +31,7 @@
                                 // Display post HTML here
                                 ?>
                                 <div class="d-md-flex post-entry-2 half">
-                                    <a href="/posts/<?= $post->id ?>" class="me-4 thumbnail">
+                                    <a href="/post/<?= $post->id ?>" class="me-4 thumbnail">
                                         <img src="/uploads/<?= $post->image ?>" alt="<?= $post->title ?>"
                                              class="img-fluid">
                                     </a>
@@ -42,7 +42,7 @@
                                                     if ($category->name == $postCategoryName->name) {
                                                         echo "<span >{$postCategoryName->name}</span>";
                                                     }
-                                                } ?></span> <span class="mx-1">&bullet;</span>
+                                                } ?></span>
                                             <span><?php $date = strtotime($post->created_at);
                                                 echo date('Y M', $date); ?></span></div>
                                         <h3><a href="/post/<?= $post->id ?>"><?= $post->title ?></a></h3>
