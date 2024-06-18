@@ -6,4 +6,4 @@
 
 ###### Tip: You control what is visible on the website by choosing the elements status
 
-[![Vanilla PHP Blog](https://drive.google.com/file/d/1dWwTIxowXbJ3_1KFaa4UciQOs8YBDRWO/view?usp=sharing)](https://drive.google.com/file/d/1E8LNW54Hl1PqN294j2-x_LH9gSAwRPUc/view?usp=sharing)
+[![Vanilla PHP Blog Video](https://drive.google.com/file/d/1dWwTIxowXbJ3_1KFaa4UciQOs8YBDRWO/view?usp=sharing)](https://drive.google.com/file/d/1E8LNW54Hl1PqN294j2-x_LH9gSAwRPUc/view?usp=sharing)
